@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+	xmlns:layout="http//www.thymeleaf.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
+	<title>Acceuil</title>
+
+	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="login/assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="login/assets/css/styles.css" />
+	<link rel="stylesheet" href="acceuil/css_acceuil/css1.css">
+<link rel="stylesheet" href="acceuil/css_acceuil/css1.css"> <!-- police -->
+<link rel="stylesheet" href="acceuil/css_acceuil/css3.css"> 
+<link rel="stylesheet" href="acceuil/font/css/font-awesome.min.css">
+<style type="text/css">
+  .c {
+    color: white;
+    background-color: #3B5998  }
+	 
+	 .w {color:#3B5998}
+	.d {
+    color: black;
+    background-color: #E9E8E9 }
+	 
+  </style>
+	 
+</head>
+<body>
+<div class="overlay">
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar c  w3-left-align w3-large"><a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onClick="openNav()"><em class="fa fa-bars"></em></a> <div  class="w3-bar-item w3-padding-large "><em class="fa fa-glide w3-margin-right"></em>EMI-GATE<br>
+ </div> <a th:href="@{/accueil}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Acceuil"></a> <a href="cv/cvvvv.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mon profil"></a> <a href="mail/maillll.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"></a>
+ <div class="w3-dropdown-hover w3-hide-small"></div>
+ </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
+
+	
+	<section class="container login-form ">
+		<section>
+		  <form th:action="@{/seConnecter}" method="POST" name="loginForm" role="login">
+			<img src="login/assets/images/5.png" alt="" />
+			
+				<div class="form-group">
+				  <input class="input1"  name="email" type="email" placeholder="email" class="form-control" />
+				</div>
+			
+				<div class="input-group">
+					<input class="input1" name="psw"  type="password" placeholder="password"  required class="form-control"/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="tooltip" data-toggle="tooltip" data-placement="top" title="Mot de passe oublié?">?</button>
+					</span>
+				</div>
+				
+			<button type="submit" name="go" class="btn btn-primary btn-block">Se connecter</button>
+			&nbsp;
+		  </form>
+		</section>
+	</section>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="login/assets/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script>
+	<!--
+	$( document ).ready(function() {
+	    $('#tooltip').tooltip();
+	});
+	-->
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+	xmlns:layout="http//www.thymeleaf.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>EMI-Gate</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css"
+th:href="@{/css/style.css}" />
+<script type="text/javascript">
+
+function valider() {
+	  if(document.loginForm.email.value != "") {
+	    document.formSaisie.submit();
+	  }
+	}
+</script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>
+                    <span class="titre"> EMI-Gate </span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current">
+                        <a th:href="@{/accueil}">Accueil</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/accueil}">Inscription</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/accueil}">Contact</a>
+                    </li>
+                    
+                    <li th:if="${user}">
+                        <a th:href="@{/deconnecter}" >Se déconnecter</a>
+                    </li>
+                    
+                   
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1><span th:if="${user}"  th:text="${session.nom}+' '+${session.prenom}+','" ></span>   Bienvenue sur EMI-Gate</h1>
+            <p>
+               EMI Gate, réseau social permettant d'établir une connexion rapide, fiable et sûre entre les EMIstes. 	
+            </p>
+        </div>
+    </section>
+
+    <section id="newsletter">
+        <div class="container">
+        
+       <div id="connecter" th:if="${user}">
+        <h1  style="font-family : 'Goudy Old Style'" th:text="'Bonjour ' + ${session.nom}+' '+${session.prenom}"></h1>
+       </div> 
+       
+        <div class="deconnecter" th:unless="${user}">
+            <h1>
+              S'inscrire chez Emi-Gate
+            </h1>
+
+            <form  th:action="@{/inscription}" method="POST" name="loginForm" >
+                <div>
+                <input class="input1"  name="email" type="email" placeholder="email" />
+                <input class="input1" name="nom"  type="text" placeholder="nom" />
+                 <input class="input1"  name="prenom" type="text" placeholder="prénom" />
+                </div>
+                <div>
+                <input class="input1" name="psw"  type="password" placeholder="mot de passe" />
+                <input class="input1" name="psw1"  type="password" placeholder="confirmer mot de passe" />
+                </div>
+				<div>
+				
+				</div>
+                <button  type="submit" class="button_1" onclick="valider()" >S'inscrire</button>
+            </form>
+        </div>
+        </div>
+    </section>
+
+    <section  id="boxes" th:if="${user}" >
+        <div th:switch="${user.name}"  class="container">
+            <div class="box" th:case="'boutaout'">
+                <img src="../static/img/boutaout.jpg"  th:src="@{/img/boutaout.jpg}" height="140" width="140"/>
+                <h3>Boutaout El Mouloudi</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" th:case="'berhaoui'">
+                <img src="../static/img/berhaoui.jpg"  th:src="@{/img/berhaoui.jpg}" height="140" width="140"/>
+                <h3>Ayoub El Berahaoui</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" th:case="'bennouna'">
+                <img src="../static/img/bennouna.jpg"  th:src="@{/img/bennouna.jpg}" height="140" width="140"/>
+                <h3>Bennouna Ayoub</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+
+            <div class="box" th:case="'aboul'">
+                <img src="../static/img/aboul.jpg" th:src="@{/img/aboul.jpg}" height="140" width="140"/>
+                <h3>Achraf Aboul</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" th:case="'achoukhan'">
+                <img src="../static/img/achoukhan.png"  th:src="@{/img/achoukhan.png}" height="140" width="140"/>
+                <h3>Mouad Achoukhan</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" th:case="'bensghir'">
+                <img src="../static/img/bensghir.jpg"  th:src="@{/img/bensghir.jpg}" height="140" width="140"/>
+                <h3>Bensghir Mohammed Amine</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            
+     
+            
+        </div>
+    </section>
+
+
+<section  id="boxes" th:unless="${user}">
+        <div  class="container">
+            <div class="box">
+                <img src="../static/img/boutaout.jpg"   th:src="@{/img/boutaout.jpg}" height="140" width="140"/>
+                <h3>Boutaout El Mouloudi</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box">
+                <img src="../static/img/berhaoui.png" th:src="@{/img/berhaoui.png}"   height="140" width="140"/>
+                <h3>Ayoub El Berahaoui</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" >
+                <img src="../static/img/bennouna.jpg" th:src="@{/img/bennouna.jpg}" height="140" width="140"/>
+                <h3>Bennouna Ayoub</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+
+            <div class="box" >
+                <img src="../static/img/aboul.jpg" th:src="@{/img/aboul.jpg}" height="140" width="140"/>
+                <h3>Achraf Aboul</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box" >
+                <img src="../static/img/achoukhan.png" th:src="@{/img/achoukhan.png}" height="140" width="140"/>
+                <h3>Mouad Achoukhan</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            <div class="box">
+                <img src="../static/img/bensghir.jpg" th:src="@{/img/bensghir.jpg}" height="140" width="140"/>
+                <h3>Bensghir Mohammed Amine</h3>
+                <p>
+                    Vestibulum sodales nulla non ornare rutrum. Donec lacus eros, pellentesque vitae venenatis id, mattis ac turpis. Aenean quis urna at ipsum efficitur sagittis.
+                </p>
+            </div>
+            
+     
+            
+        </div>
+    </section>
+
+    <footer>
+        <p> Site web &copy; 2017 by boutaout achoukhan bennouna aboul berhaoui bensghir</p>
+    </footer>
+
+
+</body>
+
+</html>
